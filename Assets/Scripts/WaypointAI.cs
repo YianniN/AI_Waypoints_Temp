@@ -6,9 +6,9 @@ public class WaypointAI : MonoBehaviour
 {
 
     [SerializeField] private float speed = 2.5f;
-    [SerializeField] private GameObject goal;
-    [SerializeField] private GameObject goal2;
-    [SerializeField] private bool goalIsFirst = true;
+    [SerializeField] private GameObject[] goals;
+    private int goalIndex = 0;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -20,38 +20,23 @@ public class WaypointAI : MonoBehaviour
     void Update()
     {
 
-        float distance = Vector2.Distance(transform.position, goal.transform.position);
-        float distance2 = Vector2.Distance(transform.position, goal2.transform.position);
-
-        if (goalIsFirst == true)
+        float distance = Vector2.Distance(transform.position, goals[goalIndex].transform.position);
+        if (distance > 0.01f)
         {
-            if (distance > 0.01f)
-            {
-                Vector2 direction = (goal.transform.position - transform.position).normalized;
-                Vector2 aiPosition = transform.position;
-                aiPosition += (direction * speed * Time.deltaTime);
-                transform.position = aiPosition;
+            Vector2 direction = (goals[goalIndex].transform.position - transform.position).normalized;
+            Vector2 aiPosition = transform.position;
+            aiPosition += (direction * speed * Time.deltaTime);
+            transform.position = aiPosition;
 
-            }
-            else
-            {
-                goalIsFirst = false;
-            }
-                  
         }
         else
         {
-            if (distance2 > 0.01f)
+            goalIndex += 1;
+            if (goalIndex >= goals.Length)
             {
-                Vector2 direction2 = (goal2.transform.position - transform.position).normalized;
-                Vector2 aiPosition = transform.position;
-                aiPosition += (direction2 * speed * Time.deltaTime);
-                transform.position = aiPosition;
-            }
-            else
-            {
-                goalIsFirst = true;
+                goalIndex = 0;
             }
         }
+
     }
 }
