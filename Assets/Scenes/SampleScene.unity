@@ -382,6 +382,7 @@ GameObject:
   - component: {fileID: 1302791189}
   - component: {fileID: 1302791192}
   - component: {fileID: 1302791191}
+  - component: {fileID: 1302791193}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -470,6 +471,7 @@ MonoBehaviour:
   goals:
   - {fileID: 256778508}
   - {fileID: 1258783213}
+  isMoving: 1
 --- !u!61 &1302791192
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -496,6 +498,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1302791193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302791188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845c22ab35cb805429f5873e991b9b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
 --- !u!1 &1862591593
 GameObject:
   m_ObjectHideFlags: 0

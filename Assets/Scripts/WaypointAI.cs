@@ -8,7 +8,8 @@ public class WaypointAI : MonoBehaviour
     [SerializeField] private float speed = 2.5f;
     [SerializeField] private GameObject[] goals;
     private int goalIndex = 0;
-    
+
+    public bool isMoving = true;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,8 @@ public class WaypointAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isMoving == false)
+        { return; }
 
         float distance = Vector2.Distance(transform.position, goals[goalIndex].transform.position);
         if (distance > 0.01f)
